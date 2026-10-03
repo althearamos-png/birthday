@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JAJA Birthday Chaos 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #171126, #3d205c, #692d67);
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.card {
+    padding: 30px 20px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    color: #ffd166;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 14px 25px;
+    margin-top: 20px;
+    background: #ffd166;
+    color: #241536;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* START */
+
+.big-emoji {
+    font-size: 90px;
+    animation: bounce 1.4s infinite;
+}
+
+.warning {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+}
+
+/* STAR GAME */
+
+.score {
+    color: #ffd166;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px;
+}
+
+#starArea {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+}
+
+.star {
+    position: absolute;
+    font-size: 35px;
+    cursor: pointer;
+    user-select: none;
+    animation: wiggle .7s infinite alternate;
+}
+
+/* CAKE GAME */
+
+#cakeArea {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.2);
+}
+
+.cake {
+    position: absolute;
+    font-size: 55px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* FINAL */
+
+.final {
+    animation: appear 1s ease;
+}
+
+.final-title {
+    font-size: 55px;
+    font-weight: 900;
+    color: #ffd166;
+    text-shadow:
+        0 0 10px #ffd166,
+        0 0 30px #ff4f81;
+    animation: crazy 1s infinite alternate;
+}
+
+.final-cake {
+    font-size: 110px;
+    animation: bounce 1s infinite;
+}
+
+/* CONFETTI */
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    z-index: 9999;
+    animation: fall 4s linear forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes bounce {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes wiggle {
+    from {
+        transform: rotate(-10deg);
+    }
+
+    to {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes crazy {
+    from {
+        transform: rotate(-2deg) scale(1);
+    }
+
+    to {
+        transform: rotate(2deg) scale(1.08);
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@media(max-width:500px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .final-title {
+        font-size: 40px;
+    }
+
+    #starArea,
+    #cakeArea {
+        height: 360px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= START ================= -->
+
+<section class="screen active" id="startScreen">
+
+<div class="container">
+
+<div class="card">
+
+<div class="big-emoji">
+🎁
+</div>
+
+<h1>
+JAJA'S BIRTHDAY CHAOS
+</h1>
+
+<p>
+You have been selected for a completely
+unnecessary birthday experience. 😭
+</p>
+
+<div class="warning">
+
+⚠️ WARNING ⚠️
+
+<br><br>
+
+This website contains:
+<br>
+⭐ Random stars
+<br>
+🎂 A suspicious cake
+<br>
+😂 Absolutely no useful purpose
+<br>
+💥 Possible birthday chaos
+
+</div>
+
+<button onclick="startStars()">
+ENTER AT YOUR OWN RISK 🎮
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= STAR GAME ================= -->
+
+<section class="screen" id="starScreen">
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+MISSION 1 ⭐
+</h2>
+
+<p>
+Catch 10 stars.
+</p>
+
+<p>
+Why? Don't ask questions.
+Just do it. 😭
+</p>
+
+<div class="score">
+⭐ <span id="starScore">0</span> / 10
+</div>
+
+<div id="starArea"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CAKE GAME ================= -->
+
+<section class="screen" id="cakeScreen">
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+MISSION 2 🎂
+</h2>
+
+<p>
+THE CAKE IS RUNNING AWAY.
+</p>
+
+<p>
+CATCH IT BEFORE IT ESCAPES. 😭
+</p>
+
+<div class="score">
+🎂 <span id="cakeScore">0</span> / 5
+</div>
+
+<div id="cakeArea"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="screen" id="finalScreen">
+
+<div class="container">
+
+<div class="card final">
+
+<div class="final-cake">
+🎂
+</div>
+
+<div class="final-title">
+PI BIRTHDAY PARE!!!
+</div>
+
+<br>
+
+<p style="font-size:22px;">
+🎉🎉🎉
+</p>
+
+<br>
+
+<p>
+HAHAHAHAHAHAHAHA
+</p>
+
+<br>
+
+<p>
+You completed the most unnecessary
+birthday game ever created. 😭
+</p>
+
+<br>
+
+<p>
+Anyway...
+</p>
+
+<br>
+
+<p style="font-size:20px;">
+<strong>
+HAPPY BIRTHDAY, PARE!!! 🎂😭
+</strong>
+</p>
+
+<br>
+
+<p>
+🙏 May God bless you always!
+</p>
+
+<br>
+
+<p style="font-size:28px;">
+😂 🎉 🎂 🎈 🙏
+</p>
+
+<button onclick="celebrate()">
+MORE CHAOS 💥
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+/* ==========================================
+   SCREEN SWITCHER
+========================================== */
+
+function showScreen(screenID) {
+
+    document.querySelectorAll(".screen").forEach(function(screen) {
+
+        screen.classList.remove("active");
+
+    });
+
+    document.getElementById(screenID).classList.add("active");
+
+}
+
+
+
+/* ==========================================
+   STAR GAME
+========================================== */
+
+let starScore = 0;
+
+function startStars() {
+
+    starScore = 0;
+
+    document.getElementById("starScore").textContent = starScore;
+
+    showScreen("starScreen");
+
+    createStar();
+
+}
+
+
+function createStar() {
+
+    const area = document.getElementById("starArea");
+
+    area.innerHTML = "";
+
+    if(starScore >= 10) {
+
+        setTimeout(function() {
+
+            startCakeGame();
+
+        }, 500);
+
+        return;
+
+    }
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.textContent = "⭐";
+
+    const maxX = area.clientWidth - 45;
+
+    const maxY = area.clientHeight - 45;
+
+    star.style.left =
+        Math.random() * maxX + "px";
+
+    star.style.top =
+        Math.random() * maxY + "px";
+
+
+    star.onclick = function() {
+
+        starScore++;
+
+        document.getElementById("starScore")
+        .textContent = starScore;
+
+        createStar();
+
+    };
+
+
+    area.appendChild(star);
+
+}
+
+
+
+/* ==========================================
+   CAKE GAME
+========================================== */
+
+let cakeScore = 0;
+
+function startCakeGame() {
+
+    cakeScore = 0;
+
+    document.getElementById("cakeScore")
+    .textContent = cakeScore;
+
+    showScreen("cakeScreen");
+
+    createCake();
+
+}
+
+
+function createCake() {
+
+    const area =
+        document.getElementById("cakeArea");
+
+    area.innerHTML = "";
+
+    if(cakeScore >= 5) {
+
+        setTimeout(function() {
+
+            showFinal();
+
+        }, 600);
+
+        return;
+
+    }
+
+
+    const cake =
+        document.createElement("div");
+
+    cake.className = "cake";
+
+    cake.textContent = "🎂";
+
+
+    const maxX =
+        area.clientWidth - 65;
+
+    const maxY =
+        area.clientHeight - 65;
+
+
+    cake.style.left =
+        Math.random() * maxX + "px";
+
+    cake.style.top =
+        Math.random() * maxY + "px";
+
+
+    cake.onclick = function() {
+
+        cakeScore++;
+
+        document.getElementById("cakeScore")
+        .textContent = cakeScore;
+
+        createCake();
+
+    };
+
+
+    area.appendChild(cake);
+
+}
+
+
+
+/* ==========================================
+   FINAL
+========================================== */
+
+function showFinal() {
+
+    showScreen("finalScreen");
+
+    celebrate();
+
+}
+
+
+
+/* ==========================================
+   CONFETTI
+========================================== */
+
+function celebrate() {
+
+    for(let i = 0; i < 150; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className =
+            "confetti";
+
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+
+        confetti.style.backgroundColor =
+            [
+                "#ffd166",
+                "#ff4f81",
+                "#7bdff2",
+                "#ffffff",
+                "#b8f2e6",
+                "#c77dff"
+            ][
+                Math.floor(Math.random() * 6)
+            ];
+
+
+        confetti.style.width =
+            (Math.random() * 10 + 5) + "px";
+
+
+        confetti.style.height =
+            (Math.random() * 10 + 5) + "px";
+
+
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+
+        document.body.appendChild(confetti);
+
+
+        setTimeout(function() {
+
+            confetti.remove();
+
+        }, 5000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
